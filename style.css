@@ -804,3 +804,26 @@ a.tl-filter:hover { color: #fff; }
 
   .hero-scroll-cue { display: none; }
 }
+
+/* ====== RESTAURANTS ====== */
+.rest-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+  transition: background .15s;
+}
+.rest-item:last-child { border-bottom: none; }
+.rest-item-left { flex: 1; min-width: 0; }
+.rest-item-name {
+  font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+}
+.rest-item-meta {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+}
+.rest-item-city {
+  font-size: 11px; font-weight: 700;
+  background: rgba(90,158,150,.1); color: var(--teal);
+  padding: 1px 8px; border-radius: var(--r);
+}
+.rest-item-note {
+  font-size: 12px; color: var(--ink-mute); font-style: italic;
+}

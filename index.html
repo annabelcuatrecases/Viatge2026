@@ -31,10 +31,11 @@
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">FL<em>&</em>BS <span>2026</span></a>
     <div class="nav-links">
-      <a href="#dia1"   class="nav-link">Itinerari</a>
-      <a href="#crucero" class="nav-link">Creuer</a>
-      <a href="#compra"  class="nav-link">Compra</a>
-      <a href="#gastos"  class="nav-link">Despeses</a>
+      <a href="#dia1"        class="nav-link">Itinerari</a>
+      <a href="#crucero"     class="nav-link">Creuer</a>
+      <a href="#compra"      class="nav-link">Compra</a>
+      <a href="#gastos"      class="nav-link">Despeses</a>
+      <a href="#restaurants" class="nav-link">Restaurants</a>
     </div>
     <div class="nav-right">
       <div class="nav-dot"></div>
@@ -587,7 +588,7 @@
           <div class="le-sub">Afegeix el primer producte</div>
         </div>
       </div>
-      <div class="tool-note">🔗 Dades guardades en aquest dispositiu · puja la web a hosting per compartir en temps real</div>
+      <div class="tool-note">🔗 Sincronitzat amb el grup en temps real 🟢</div>
     </div>
   </div>
 </section>
@@ -642,7 +643,37 @@
           <div class="le-sub">Afegeix la primera despesa del grup</div>
         </div>
       </div>
-      <div class="tool-note">🔗 Dades guardades en aquest dispositiu · puja la web a hosting per compartir en temps real</div>
+      <div class="tool-note">🔗 Sincronitzat amb el grup en temps real 🟢</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESTAURANTS RECOMANATS ===== -->
+<section class="tool-section" id="restaurants">
+  <div class="container">
+    <div class="section-head">
+      <div class="sh-kicker">Recomanacions del grup</div>
+      <h2 class="sh-title">Restaurants <em>recomanats</em></h2>
+    </div>
+    <div class="tool-card">
+      <div class="tool-form">
+        <div class="form-row">
+          <input id="rest-name"  type="text" placeholder="Nom del restaurant…"   class="tool-input grow" />
+          <input id="rest-city"  type="text" placeholder="Lloc (Miami, Key West…)" class="tool-input md" />
+          <button id="rest-add-btn" class="tool-btn">+ Afegir</button>
+        </div>
+        <div class="form-row">
+          <input id="rest-note" type="text" placeholder="Nota o recomanació (opcional)…" class="tool-input grow" />
+        </div>
+      </div>
+      <div id="rest-list" class="item-list">
+        <div class="list-empty" id="rest-empty">
+          <div class="le-icon">🍽️</div>
+          <div class="le-title">Sense restaurants encara</div>
+          <div class="le-sub">Afegeix el primer restaurant recomanat</div>
+        </div>
+      </div>
+      <div class="tool-note">🔗 Sincronitzat amb el grup en temps real 🟢</div>
     </div>
   </div>
 </section>
@@ -661,5 +692,6 @@
 <script defer src="main.js?v=20260518"></script>
 <script defer src="shopping.js?v=20260518"></script>
 <script defer src="expenses.js?v=20260518"></script>
+<script defer src="restaurants.js?v=20260518"></script>
 </body>
 </html>
