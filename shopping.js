@@ -211,3 +211,67 @@
     init();
   }
 })();
+
+/* ====== NOTES COMPARTIDES ====== */
+(function() {
+  var SUPA_URL = "https://ofpqfuzapjniprpiwfkl.supabase.co";
+  var SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9mcHFmdXphcGpuaXBycGl3ZmtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNzYwMzgsImV4cCI6MjA5NDc1MjAzOH0.JXwb5PLvykUBUXHs0oOPHZ57Q6BdfcVIydCKC3CDsBc";
+  var HEADERS = { "Content-Type": "application/json", "apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY };
+  var NOTE_ID = "shopping-group-note";
+
+  function apiFetch(path, opts) {
+    return fetch(SUPA_URL + "/rest/v1/" + path, Object.assign({ headers: HEADERS }, opts || {}))
+      .then(function(r) { return r.ok ? r.json().catch(function(){ return []; }) : Promise.reject(r.status); });
+  }
+
+  function loadNote() {
+    apiFetch("notes?id=eq." + NOTE_ID)
+      .then(function(rows) {
+        var ta = document.getElementById("shop-notes");
+        if (ta && rows.length > 0) ta.value = rows[0].content || "";
+      }).catch(function(){});
+  }
+
+  function saveNote() {
+    var ta  = document.getElementById("shop-notes");
+    var btn = document.getElementById("shop-notes-save");
+    var st  = document.getElementById("shop-notes-status");
+    if (!ta) return;
+    var content = ta.value;
+    if (btn) btn.disabled = true;
+    if (st)  st.textContent = "Guardant…";
+
+    apiFetch("notes?id=eq." + NOTE_ID, {
+      method: "DELETE", headers: Object.assign({ "Prefer": "return=minimal" }, HEADERS)
+    }).then(function() {
+      return apiFetch("notes", {
+        method: "POST",
+        body: JSON.stringify({ id: NOTE_ID, content: content })
+      });
+    }).then(function() {
+      if (st)  st.textContent = "✓ Guardat!";
+      if (btn) btn.disabled = false;
+      setTimeout(function(){ if (st) st.textContent = ""; }, 3000);
+    }).catch(function() {
+      if (st)  st.textContent = "Error al guardar";
+      if (btn) btn.disabled = false;
+    });
+  }
+
+  function initNotes() {
+    loadNote();
+    setInterval(loadNote, 30000);
+    var btn = document.getElementById("shop-notes-save");
+    if (btn) btn.addEventListener("click", saveNote);
+    var ta = document.getElementById("shop-notes");
+    if (ta) ta.addEventListener("keydown", function(e){
+      if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) saveNote();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNotes);
+  } else {
+    initNotes();
+  }
+})();

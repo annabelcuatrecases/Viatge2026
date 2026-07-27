@@ -836,3 +836,43 @@ a.tl-filter:hover { color: #fff; }
   border: 1px solid #b0d9c8;
   padding: 2px 8px; border-radius: var(--r);
 }
+
+/* ====== NOTES COMPARTIDES ====== */
+.shop-notes-wrap {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  background: #fffdf9;
+}
+.shop-notes-label {
+  font-size: 12px; font-weight: 700;
+  color: var(--ink); margin-bottom: 8px;
+}
+.shop-notes-hint {
+  font-weight: 400; color: var(--ink-mute); font-style: italic;
+}
+.shop-notes-area {
+  width: 100%; padding: 10px 13px;
+  border-radius: var(--r); border: 1.5px solid var(--sand-dark);
+  background: var(--white); color: var(--ink);
+  font-size: 13px; font-family: var(--font-body);
+  line-height: 1.6; resize: vertical; outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.shop-notes-area:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(211,132,121,.12);
+}
+.shop-notes-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 8px;
+}
+.shop-notes-status {
+  font-size: 11px; color: var(--teal); font-style: italic;
+}
+.shop-notes-btn {
+  padding: 6px 16px; border-radius: var(--r);
+  border: none; background: var(--rose); color: #fff;
+  font-size: 12px; font-weight: 700; font-family: var(--font-body);
+  cursor: pointer; transition: background .2s;
+}
+.shop-notes-btn:hover { background: var(--rose-dark); }
